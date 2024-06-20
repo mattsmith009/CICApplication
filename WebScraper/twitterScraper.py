@@ -1,6 +1,7 @@
 import asyncio
 from twscrape import API, gather
 from twscrape.logger import set_log_level
+import re 
 
 async def main(): 
     api = API() 
@@ -16,39 +17,34 @@ async def main():
 
     await gather(api.tweet_replies(tweet_id, limit=20))
 
-    user_login = "xdevelopers"
-    await api.user_by_login(user_login)  # User
-
-    # user info
-    user_id = 2244994945
-    await api.user_by_id(user_id)  # User
-    await gather(api.following(user_id, limit=20))  # list[User]
-    await gather(api.followers(user_id, limit=20))  # list[User]
-    await gather(api.verified_followers(user_id, limit=20))  # list[User]
-    await gather(api.subscriptions(user_id, limit=20))  # list[User]
-    await gather(api.user_tweets(user_id, limit=20))  # list[Tweet]
-    await gather(api.user_tweets_and_replies(user_id, limit=20))  # list[Tweet]
-    await gather(api.liked_tweets(user_id, limit=20))  # list[Tweet]
-
     # list info
     list_id = 123456789
     await gather(api.list_timeline(list_id))
 
+    listOfTweets = {}
     # NOTE 1: gather is a helper function to receive all data as list, FOR can be used as well:
-    async for tweet in api.search("elon musk"):
-        print(tweet.id, tweet.user.username, tweet.rawContent)  # tweet is `Tweet` object
+    async for tweet in api.search("melon fly"):
+        # print(tweet.id, tweet.user.username, tweet.rawContent)  # tweet is `Tweet` object
+        listOfTweets[tweet.id] = tweet.rawContent
 
-    # NOTE 2: all methods have `raw` version (returns `httpx.Response` object):
-    async for rep in api.search_raw("elon musk"):
-        print(rep.status_code, rep.json())  # rep is `httpx.Response` object
 
+    # # NOTE 2: all methods have `raw` version (returns `httpx.Response` object):
+    # async for rep in api.search_raw("elon musk"):
+    #     print(rep.status_code, rep.json())  # rep is `httpx.Response` object
+
+    
+    linkRegex =  r"https?://(?:www\\.)?[a-zA-Z0-9./]+"
+    links = []
+    for key in listOfTweets: 
+        print(str(key) + ": " + listOfTweets[key])
+        print("\n")
+        links.append(re.findall(linkRegex, listOfTweets[key]))
+        # need to detect links in a post and navigate to that post to determine if it is important or not. 
+        # use the regex (or find a better one)
+    
+    print(links)
     # change log level, default info
     set_log_level("DEBUG")
-
-    # Tweet & User model can be converted to regular dict or json, e.g.:
-    doc = await api.user_by_id(user_id)  # User
-    doc.dict()  # -> python dict
-    doc.json()  # -> json string
 
 if __name__ == "__main__":
     asyncio.run(main())
