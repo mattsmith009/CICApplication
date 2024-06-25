@@ -23,7 +23,7 @@ async def main():
 
     listOfTweets = {}
     # NOTE 1: gather is a helper function to receive all data as list, FOR can be used as well:
-    async for tweet in api.search("alphavirus, since:2024-06-19"):
+    async for tweet in api.search(f"{input("Enter pest or virus: ")}, since:{input("Enter date range in the form YYYY-MM-DD: ")}"): # user input eventually
         # print(tweet.id, tweet.user.username, tweet.rawContent)  # tweet is `Tweet` object
         listOfTweets[tweet.id] = tweet.rawContent
     
@@ -31,10 +31,10 @@ async def main():
     links = []
     for key in listOfTweets: 
         print(str(key) + ": " + listOfTweets[key])
-        print("\n")
         links.append(re.findall(linkRegex, listOfTweets[key]))
         # need to detect links in a post and navigate to that post to determine if it is important or not. 
         # use the regex (or find a better one)
+    print("\n")
     
     # print(links)
     # change log level, default info
