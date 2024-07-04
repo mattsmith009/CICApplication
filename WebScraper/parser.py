@@ -5,6 +5,9 @@ from transformers import TFAutoModelForSequenceClassification
 from transformers import AutoTokenizer, AutoConfig
 import numpy as np
 from scipy.special import softmax
+
+# Need to get the user inputs to the HTML file and then use it as an argument in the main function.
+
 if __name__ == "__main__":
    scraperRun = asyncio.run(twitterScraper.main())
    tweets = scraperRun[0] # A list of tweets containing the keyword we searched for

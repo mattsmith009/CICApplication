@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html> 
+    <head>
+        <link rel="stylesheet" type="text/css" href="/index.css"></link>
+        <title> Web Scraper </title>
+    </head>
+    <body>
+        <h1> <%= message %></h1>
+        <form action="/submit" method="post"> 
+            <input type="text" id="pest" name="pest" placeholder="Enter a pest name">
+            <button type="submit">Submit</button>
+        </form>
+        <form action="/date" method="post"> 
+            <input type="text" id="date" name="date" placeholder="Enter a date in the form YYYY-MM-DD">
+            <button type="submit">Submit</button>
+        </form>
+        <h2>Submitted Pests:</h2>
+        <ul>
+            <% pests.forEach(function(pest) { %>
+                <li><%= pest %></li>
+            <% }); %>
+        </ul>
+        <br>
+        <!-- <form action="/submit" method="post"> 
+            <input type="text" id="date" name="date" placeholder="Enter a date">
+            <button type="submit">Submit</button>
+        </form> -->
+    </body>
+</html>

@@ -3,7 +3,7 @@ from twscrape import API, gather
 from twscrape.logger import set_log_level
 import re 
 
-async def main(): 
+async def main(pest, date): 
     api = API() 
     await api.pool.add_account("spazmattie", "06M03s04", "mattboi2004@icloud.com", "Matt$&Sam2")
     await api.pool.login_all()
@@ -22,6 +22,9 @@ async def main():
     await gather(api.list_timeline(list_id))
 
     listOfTweets = {}
+    
+    # Need to get the user inputs to the HTML file and then use it as an argument in the main function.
+
     # NOTE 1: gather is a helper function to receive all data as list, FOR can be used as well:
     async for tweet in api.search(f"{input("Enter pest or virus: ")}, since:{input("Enter date range in the form YYYY-MM-DD: ")}"): # user input eventually
         # print(tweet.id, tweet.user.username, tweet.rawContent)  # tweet is `Tweet` object
