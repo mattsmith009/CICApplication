@@ -26,7 +26,7 @@ async def main(pest, date):
     # Need to get the user inputs to the HTML file and then use it as an argument in the main function.
 
     # NOTE 1: gather is a helper function to receive all data as list, FOR can be used as well:
-    async for tweet in api.search(f"{input("Enter pest or virus: ")}, since:{input("Enter date range in the form YYYY-MM-DD: ")}"): # user input eventually
+    async for tweet in api.search(f"{pest}, since:{date}"): # user input eventually
         # print(tweet.id, tweet.user.username, tweet.rawContent)  # tweet is `Tweet` object
         listOfTweets[tweet.id] = tweet.rawContent
     

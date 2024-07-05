@@ -11,9 +11,14 @@
             <input type="text" id="pest" name="pest" placeholder="Enter a pest name">
             <button type="submit">Submit</button>
         </form>
+
         <form action="/date" method="post"> 
-            <input type="text" id="date" name="date" placeholder="Enter a date in the form YYYY-MM-DD">
+            <input type="text" id="date" name="date" placeholder="YYYY-MM-DD">
             <button type="submit">Submit</button>
+        </form>
+
+        <form action="/grab" method="get">
+            <button type="submit">Grab Data</button>
         </form>
         <h2>Submitted Pests:</h2>
         <ul>
