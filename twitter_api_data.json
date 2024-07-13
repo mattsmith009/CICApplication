@@ -1,0 +1,60 @@
+{
+    "user": {
+        "result": {
+            "__typename": "User",
+            "id": "VXNlcjo4OTMxNjUyNjk2MzU1Mzg5NDg=",
+            "rest_id": "893165269635538948",
+            "affiliates_highlighted_label": {},
+            "is_blue_verified": false,
+            "profile_image_shape": "Circle",
+            "legacy": {
+                "created_at": "Thu Aug 03 17:42:49 +0000 2017",
+                "default_profile": true,
+                "default_profile_image": false,
+                "description": "\ud83c\uddef\ud83c\uddf2 | knowledge is power",
+                "entities": {
+                    "description": {
+                        "urls": []
+                    }
+                },
+                "fast_followers_count": 0,
+                "favourites_count": 4829,
+                "followers_count": 140,
+                "friends_count": 423,
+                "has_custom_timelines": true,
+                "is_translator": false,
+                "listed_count": 0,
+                "location": "",
+                "media_count": 129,
+                "name": "//Black Lives Matter//",
+                "normal_followers_count": 140,
+                "pinned_tweet_ids_str": [
+                    "1277283514707259393"
+                ],
+                "possibly_sensitive": false,
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/893165269635538948/1590806558",
+                "profile_image_url_https": "https://pbs.twimg.com/profile_images/1478749009758068742/jQSDbeP0_x96.jpg",
+                "profile_interstitial_type": "",
+                "screen_name": "Spazmattie",
+                "statuses_count": 8930,
+                "translator_type": "none",
+                "verified": false,
+                "withheld_in_countries": []
+            },
+            "verified_phone_status": false,
+            "legacy_extended_profile": {},
+            "is_profile_translatable": false,
+            "has_hidden_likes_on_profile": false,
+            "has_hidden_subscriptions_on_profile": false,
+            "verification_info": {
+                "is_identity_verified": false
+            },
+            "highlights_info": {
+                "can_highlight_tweets": false,
+                "highlighted_tweets": "0"
+            },
+            "business_account": {},
+            "creator_subscriptions_count": 0
+        }
+    }
+}
