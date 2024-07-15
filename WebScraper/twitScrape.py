@@ -1,42 +1,72 @@
 from tweety import Twitter
+from tweety.filters import SearchFilters
 from deep_translator import GoogleTranslator
 import json
-from datetime import datetime
+from datetime import datetime, timezone
+from helpers import backADay
+from dateutil import tz
 
 username = "spazmattie"
 password = "06M03s04"
-
+from_zone = tz.tzutc()
+to_zone = tz.tzlocal()
 app = Twitter("session")
 app.sign_in(username, password)
 # print(app.user)
-
 usernames = ["Tu_IMSS", "Agricultura_mex"]
-tweetsDict = {}
+keywords = ["alphavirus", "japanese encephalitis"]
 
-for user in usernames: 
-    tweetsDict[user] = []
-    tweets = app.get_tweets(username=user)
-    for tweet in tweets: 
-        # tweetsDict[user].append([GoogleTranslator(source='es', target='en').translate(tweet.text), str(tweet.date)])
-        tweetsDict[user].append([tweet.text, str(tweet.date)]) # times are in UTC which is 6 hours ahead of Mexico.
+def searchByUser(usernames: list):
+    userTweetsDict = {}
+    cutoff = backADay(datetime.now()).replace(tzinfo=to_zone)
+    for user in usernames: 
+        userTweetsDict[user] = []
+        tweets = app.get_tweets(username=user, pages=1)
 
-for key in tweetsDict: 
-    for tweet in tweetsDict[key]:
-        print(tweet)
-        print('\n')
+        for tweet in tweets: 
+            tweetDate = tweet.date.replace(tzinfo=to_zone)
+            if tweetDate < cutoff: 
+                break
+            else: 
+                # userTweetsDict[user].append([GoogleTranslator(source='es', target='en').translate(tweet.text), str(tweetDate)])
+                userTweetsDict[user].append([tweet.text, str(tweetDate)]) 
 
+    return userTweetsDict
+
+def searchByKeyword(keywords: list):
+    keywordTweetsDict = {}
+    cutoff = backADay(datetime.now()).replace(tzinfo=to_zone)
+    for keyword in keywords: 
+        keywordTweetsDict[keyword] = []
+        tweets = app.search(keyword, filter_=SearchFilters.Latest())
+        for tweet in tweets:
+            tweetDate = tweet.date.replace(tzinfo=to_zone)
+            if tweetDate < cutoff: 
+                break 
+            else:
+                # keywordTweetsDict[keyword].append([GoogleTranslator(source='es', target='en').translate(tweet.text), str(tweetDate)])
+                keywordTweetsDict[keyword].append([tweet.text, str(tweetDate)]) 
+
+    return keywordTweetsDict
+    
 # turn it into JSON data. 
-def write_json(new_data, filename='WebScraper/twitterData.json'):
+def write_user_json(new_data, filename='WebScraper/twitterData.json'):
     with open(filename,'r+') as file:
-          # First we load existing data into a dict.
         file_data = json.load(file)
-        # Join new_data with file_data inside emp_details
         file_data = {}
         file_data["twitterScrapes"] = [new_data]
-        file_data["datetime"] = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-        # Sets file's current position at offset.
+        print("done")
         file.seek(0)
-        # convert back to json.
         json.dump(file_data, file, indent = 4)
 
-write_json(tweetsDict)
+def write_keyword_json(new_data, filename='WebScraper/twitterKeywordData.json'):
+    with open(filename,'r+') as file:
+        file_data = json.load(file)
+        file_data = {}
+        file_data["twitterScrapes"] = [new_data]
+        print("done")
+        file.seek(0)
+        json.dump(file_data, file, indent = 4)
+
+write_user_json(searchByUser(usernames))
+write_keyword_json(searchByKeyword(keywords))
