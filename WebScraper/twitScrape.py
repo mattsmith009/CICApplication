@@ -12,6 +12,7 @@ from_zone = tz.tzutc()
 to_zone = tz.tzlocal()
 app = Twitter("session")
 app.sign_in(username, password)
+# app.connect()
 # print(app.user)
 usernames = ["Tu_IMSS", "Agricultura_mex"]
 keywords = ["alphavirus", "japanese encephalitis"]
