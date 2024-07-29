@@ -1,6 +1,6 @@
 # CICApplication
 
-Instructions to Scrape: 
+**Instructions to Scrape**
 
 Twitter - 
 Scraping by Keyword: The list of keywords to scrape is stored in the 'keywords' list. When you want to scrape a word, add it to that
@@ -13,12 +13,20 @@ Facebook -
 
 Instagram - 
 
-Using the Tool: 
+**Using the Tool**
 
 Inputing data - 
 
 Running the scrapers - 
 
 Gathering results - 
+
+**Training Data**
+
+Disease data - 
+
+Numerical data - 
+
+Location data - 
 
 **Examples**

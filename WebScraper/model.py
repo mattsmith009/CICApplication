@@ -1,9 +1,7 @@
 import spacy 
-# from twitScrape import searchByKeyword, searchByUser, usernames, keywords
 from training_examples import training_data, dev_data, numerical_training_data, numerical_dev_data, location_training_data, location_dev_data
 from spacy import displacy
 from spacy.tokens import DocBin
-from tqdm import tqdm 
 from spacy.util import filter_spans
 
 nlp = spacy.load('en_core_web_lg')
@@ -80,13 +78,10 @@ doc_bin_dev_instance.to_disk("dev.spacy")
 
 #  python -m spacy train config.cfg --output ./output
 
-nlp = spacy.load("output/model-best")
-test_sentences = [ "alphavirus has created 25 infections in the past two years in Alabama."]
+# nlp = spacy.load("output/model-best")
+# test_sentences = [ "alphavirus has created 25 infections in the past two years in Alabama."]
 
-doc = nlp("".join(test_sentences))
+# doc = nlp("".join(test_sentences))
 
-for ent in doc.ents: 
-    print(ent.text, ent.label_)
-
-# We take the tweet, the identified labels, and aggregate them in a json file to then be converted into a SQL query. 
-# This is as simple as writing json files, and then using an outside library to convert.
+# for ent in doc.ents: 
+#     print(ent.text, ent.label_)

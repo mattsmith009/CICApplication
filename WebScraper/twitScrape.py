@@ -2,10 +2,10 @@ from tweety import Twitter
 from tweety.filters import SearchFilters
 from deep_translator import GoogleTranslator
 import json
-from datetime import datetime, timezone
+from datetime import datetime
 from helpers import backADay
 from dateutil import tz
-from training_examples import diseases
+
 username = "spazmattie"
 password = "06M03s04"
 from_zone = tz.tzutc()
@@ -14,8 +14,6 @@ app = Twitter("session")
 app.sign_in(username, password)
 # app.connect()
 # print(app.user)
-usernames = ["Tu_IMSS", "Agricultura_mex"]
-keywords = ["MYCOPLASMOSIS"]
 
 def searchByUser(usernames: list):
     userTweetsDict = {}
@@ -68,5 +66,3 @@ def write_keyword_json(new_data, filename='WebScraper/twitterKeywordData.json'):
         print("done")
         file.seek(0)
         json.dump(file_data, file, indent = 4)
-
-print(searchByKeyword(keywords))
