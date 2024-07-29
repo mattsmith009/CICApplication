@@ -5,7 +5,7 @@ import json
 from datetime import datetime, timezone
 from helpers import backADay
 from dateutil import tz
-
+from training_examples import diseases
 username = "spazmattie"
 password = "06M03s04"
 from_zone = tz.tzutc()
@@ -15,7 +15,7 @@ app.sign_in(username, password)
 # app.connect()
 # print(app.user)
 usernames = ["Tu_IMSS", "Agricultura_mex"]
-keywords = ["alphavirus", "japanese encephalitis"]
+keywords = ["MYCOPLASMOSIS"]
 
 def searchByUser(usernames: list):
     userTweetsDict = {}
@@ -50,7 +50,7 @@ def searchByKeyword(keywords: list):
 
     return keywordTweetsDict
     
-# turn it into JSON data. 
+
 def write_user_json(new_data, filename='WebScraper/twitterData.json'):
     with open(filename,'r+') as file:
         file_data = json.load(file)
@@ -63,11 +63,10 @@ def write_user_json(new_data, filename='WebScraper/twitterData.json'):
 def write_keyword_json(new_data, filename='WebScraper/twitterKeywordData.json'):
     with open(filename,'r+') as file:
         file_data = json.load(file)
-        file_data = {}
-        file_data["twitterScrapes"] = [new_data]
+        
+        file_data["twitterScrapes"].extend([new_data])
         print("done")
         file.seek(0)
         json.dump(file_data, file, indent = 4)
 
-write_user_json(searchByUser(usernames))
-write_keyword_json(searchByKeyword(keywords))
+print(searchByKeyword(keywords))
