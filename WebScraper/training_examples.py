@@ -1716,21 +1716,20 @@ training_data = {
             "Increased cases of B. salamandrivorans have resulted in the death of 6 salamanders in affected areas. Researchers are working on enhancing diagnostic methods and treatment options."
         ]
     ]
-# }
 }
 
 dev_data = {}
 
-# roughly 82/18 split as of 07/24
+# splitting disease data
 for key in training_data: 
     if len(training_data[key][0]) > 5: 
         dev_data[key] = [training_data[key][0][5:]]
         training_data[key][0] = training_data[key][0][:5]
 
 
-print(sum(len(training_data[key][0]) for key in training_data))
-print(sum(len(dev_data[key][0]) for key in dev_data))
-# print(countries_for_language("en"))
+# print(sum(len(training_data[key][0]) for key in training_data))
+# print(sum(len(dev_data[key][0]) for key in dev_data))
+
 
 numerical_training_data = {
     "1 confirmed case": [
@@ -2409,13 +2408,15 @@ numerical_training_data = {
 }
 
 numerical_dev_data = {}
+
+# splitting numerical data
 for key in numerical_training_data:
     eighty_percent = round(len(numerical_training_data[key][0]) * 0.8)
     numerical_dev_data[key] = [numerical_training_data[key][0][eighty_percent:]]
     numerical_training_data[key][0] = numerical_training_data[key][0][:eighty_percent]
     
-print(sum(len(numerical_training_data[key][0]) for key in numerical_training_data))
-print(sum(len(numerical_dev_data[key][0]) for key in numerical_dev_data))
+# print(sum(len(numerical_training_data[key][0]) for key in numerical_training_data))
+# print(sum(len(numerical_dev_data[key][0]) for key in numerical_dev_data))
 
 location_training_data = {
     "California": [
@@ -3328,11 +3329,12 @@ location_training_data = {
 
 location_dev_data = {}
 
+# Splitting location data
 for key in location_training_data:
     eighty_percent = round(len(location_training_data[key][0]) * 0.8)
     location_dev_data[key] = [location_training_data[key][0][eighty_percent:]]
     location_training_data[key][0] = location_training_data[key][0][:eighty_percent]
 
-print(sum(len(location_training_data[key][0]) for key in location_training_data))
-print(sum(len(location_dev_data[key][0]) for key in location_dev_data))
+# print(sum(len(location_training_data[key][0]) for key in location_training_data))
+# print(sum(len(location_dev_data[key][0]) for key in location_dev_data))
 

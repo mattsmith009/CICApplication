@@ -1,6 +1,6 @@
 from datetime import datetime
 
-def backADay(date: datetime): 
+def backADay(date: datetime) -> datetime: 
     """
     Takes a datetime object as input and subtracts a day from it, returning a 
     new datetime objecty with the appropriate date. 

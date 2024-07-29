@@ -30,3 +30,5 @@ Numerical data -
 Location data - 
 
 ## **Examples**
+
+## **Error Handling**

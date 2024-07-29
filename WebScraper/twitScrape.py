@@ -1,3 +1,4 @@
+from typing import List, Dict, Tuple
 from tweety import Twitter
 from tweety.filters import SearchFilters
 from deep_translator import GoogleTranslator
@@ -15,7 +16,12 @@ app.sign_in(username, password)
 # app.connect()
 # print(app.user)
 
-def searchByUser(usernames: list):
+def searchByUser(usernames: list) -> Dict[str, List[Tuple[str]]]:
+    """
+    Searches the Twitter database for Tweets posted by any of the users within usernames up to one day ago. Returns a dictionary 
+    where the keys are the users and the corresponding value of each key is a list of tuples where each tuple contains a tweet and the time
+    it was posted by the user (Mexico time) in YYYY-MM-DD HR:MIN:SEC-TZ format.
+    """
     userTweetsDict = {}
     cutoff = backADay(datetime.now()).replace(tzinfo=to_zone)
     for user in usernames: 
@@ -32,7 +38,12 @@ def searchByUser(usernames: list):
 
     return userTweetsDict
 
-def searchByKeyword(keywords: list):
+def searchByKeyword(keywords: list) -> Dict[str, List[Tuple[str]]]:
+    """
+    Searches the Twitter database for Tweets posted within the last day containing any of the words within keywords. Returns a dictionary 
+    where the keys are the keywords and the corresponding value of each key is a list of tuples each containing a tweet (string) and the time it was 
+    posted by the user (Mexico time) in YYYY-MM-DD HR:MIN:SEC-TZ format.
+    """
     keywordTweetsDict = {}
     cutoff = backADay(datetime.now()).replace(tzinfo=to_zone)
     for keyword in keywords: 
@@ -49,7 +60,10 @@ def searchByKeyword(keywords: list):
     return keywordTweetsDict
     
 
-def write_user_json(new_data, filename='WebScraper/twitterData.json'):
+def write_user_json(new_data: any, filename='WebScraper/twitterData.json') -> None:
+    """
+        Writes the data stored in new_data to WebScraper/twitterData.json 
+    """
     with open(filename,'r+') as file:
         file_data = json.load(file)
         file_data = {}
@@ -58,7 +72,10 @@ def write_user_json(new_data, filename='WebScraper/twitterData.json'):
         file.seek(0)
         json.dump(file_data, file, indent = 4)
 
-def write_keyword_json(new_data, filename='WebScraper/twitterKeywordData.json'):
+def write_keyword_json(new_data: any, filename='WebScraper/twitterKeywordData.json') -> None:
+    """
+        Writes the data stored in new_data to WebScraper/twitterData.json 
+    """
     with open(filename,'r+') as file:
         file_data = json.load(file)
         
