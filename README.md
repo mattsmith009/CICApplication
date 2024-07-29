@@ -12,3 +12,13 @@ like to scrape from, add it to this users list. The scraper will scrape tweets f
 Facebook - 
 
 Instagram - 
+
+Using the Tool: 
+
+Inputing data - 
+
+Running the scrapers - 
+
+Gathering results - 
+
+**Examples**

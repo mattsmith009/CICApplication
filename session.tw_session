@@ -1,5 +1,5 @@
 {
-    "cookies": "auth_token=980a2ae18000b65417e86175588f344cc3768e84;ct0=a77d2db788d9192b7c57c888aa079379;kdt=1kYgBDak8FbDnH9WQcm79FPcA4J7qrVKuqNpSeXU;twid=\"u=893165269635538948\";",
+    "cookies": "auth_token=4d236989af5b788e312152a5f0f7b5011a8f93a9;ct0=452f94724f6089c6f34006df19bc1f8d;kdt=oA1eU8b2UpThWnBWZgsaFlHJhDjUnrGw8JxyOu5p;twid=\"u=893165269635538948\";",
     "user": {
         "id": "893165269635538948",
         "rest_id": "893165269635538948",
@@ -13,9 +13,9 @@
         "description": "\ud83c\uddef\ud83c\uddf2 | knowledge is power",
         "bio": "\ud83c\uddef\ud83c\uddf2 | knowledge is power",
         "fast_followers_count": "0",
-        "favourites_count": "0",
+        "favourites_count": "4829",
         "followers_count": "140",
-        "friends_count": "0",
+        "friends_count": "423",
         "has_custom_timelines": "True",
         "is_translator": "False",
         "listed_count": "0",
