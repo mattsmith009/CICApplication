@@ -7,11 +7,15 @@ from datetime import datetime
 from helpers import backADay
 from dateutil import tz
 
-username = "spazmattie"
-password = "06M03s04"
 from_zone = tz.tzutc()
 to_zone = tz.tzlocal()
 app = Twitter("session")
+
+### Fill in login info here 
+username = "spazmattie"
+password = "06M03s04"
+### Fill in login info here
+
 app.sign_in(username, password)
 # app.connect()
 # print(app.user)
@@ -60,9 +64,10 @@ def searchByKeyword(keywords: list) -> Dict[str, List[Tuple[str]]]:
     return keywordTweetsDict
     
 
-def write_user_json(new_data: any, filename='WebScraper/twitterData.json') -> None:
+def writeover_user(new_data: any, filename='WebScraper/twitterData.json') -> None:
     """
-        Writes the data stored in new_data to WebScraper/twitterData.json 
+        Writes the data stored in new_data to WebScraper/twitterData.json, overriding the data that was stored in 
+        that json file before. 
     """
     with open(filename,'r+') as file:
         file_data = json.load(file)
@@ -72,13 +77,40 @@ def write_user_json(new_data: any, filename='WebScraper/twitterData.json') -> No
         file.seek(0)
         json.dump(file_data, file, indent = 4)
 
-def write_keyword_json(new_data: any, filename='WebScraper/twitterKeywordData.json') -> None:
+def writeover_keyword(new_data: any, filename='WebScraper/twitterKeywordData.json') -> None:
     """
-        Writes the data stored in new_data to WebScraper/twitterData.json 
+        Writes the data stored in new_data to WebScraper/twitterData.json, overriding the data that was stored in that json file 
+        before.
     """
     with open(filename,'r+') as file:
         file_data = json.load(file)
-        
+        file_data = {}
+        file_data["twitterScrapes"].extend([new_data])
+        print("done")
+        file.seek(0)
+        json.dump(file_data, file, indent = 4)
+
+def write_user(new_data: any, filename='WebScraper/twitterData.json') -> None:
+    """
+        Writes the data stored in new_data to WebScraper/twitterData.json, adding onto 
+        the data that was in that json file before. 
+    """
+    with open(filename,'r+') as file:
+        file_data = json.load(file)
+        file_data = {}
+        file_data["twitterScrapes"] = [new_data]
+        print("done")
+        file.seek(0)
+        json.dump(file_data, file, indent = 4)
+
+def write_keyword(new_data: any, filename='WebScraper/twitterKeywordData.json') -> None:
+    """
+        Writes the data stored in new_data to WebScraper/twitterData.json, adding onto the
+        data that was stored in that json file before.
+    """
+    with open(filename,'r+') as file:
+        file_data = json.load(file)
+        file_data = {}
         file_data["twitterScrapes"].extend([new_data])
         print("done")
         file.seek(0)

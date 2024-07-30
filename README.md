@@ -32,3 +32,9 @@ Location data -
 ## **Examples**
 
 ## **Error Handling**
+
+Scraping social media can be elusive because of restrictions and rate limits placed on these apps by their executives in order to restrict the flow of information. For these scrapers, there are some weird errors that you will have to handle. Below I detail how I dealt with them throughout the process of scraping. 
+
+### Twitter 
+
+"tweety.exceptions.RateLimitReached: [88] Rate limit exceeded" This means that you have reached the allowed scraping limits by Twitter. As of July 2024, the rate limit is 900 requests per 15 minutes. If you encounter this, you just need to wait 15 minutes until scraping again. 

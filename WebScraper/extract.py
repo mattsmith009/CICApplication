@@ -1,17 +1,27 @@
 import spacy 
-from twitScrape import searchByKeyword, searchByUser
+from twitScrape import searchByUser, searchByKeyword
 # same for insta
 # same for facebook
 
 nlp = spacy.load("output/model-best")
 # nlp = spacy.load("output/model-last")
 
-test_sentences = [ "alphavirus has created 25 infections in the past two years in Alabama."]
-
-doc = nlp("".join(test_sentences))
-
-for ent in doc.ents: 
-    print(ent.text, ent.label_)
-    
+### Fill in scraping info here
 keywords = []
 users = []
+### Fill in scraping info here
+
+keywordsDict = searchByKeyword(keywords)
+usersDict = searchByUser(users)
+
+def createDataDictionary(rawTweets: dict) -> dict:
+    for key in rawTweets: 
+        for sentence in rawTweets[key]:
+            doc = nlp(sentence)
+            entity_dict = {}
+            entity_dict[doc] = {}
+            for ent in doc.ents: 
+                entity_dict[doc][ent.label_] = ent.text
+
+    return entity_dict
+    
