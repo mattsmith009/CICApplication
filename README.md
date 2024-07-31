@@ -23,11 +23,11 @@ Gathering results -
 
 ## **Training Data**
 
-Disease data - 
+Disease data - All diseases of importance are in the file named 'training_examples.py'. Training data for diseases has all been based on this data. Some of the data has been obtained through Twitter scraping, while others have been generated through tools such as ChatGPT. If you would like to create more training data, those are the methods I would recommend.
 
-Numerical data - 
+Numerical data - All numerical data has been obtained through tools such as TWitter scraping and ChatGPT. It provides an alright amount of diversity, with Tweets providing the best. In the case that you would like to provide more training data, I believe Twitter would provide the best results. 
 
-Location data - 
+Location data - Location data has been obtained through internet searches, ChatGPT, and Twitter. Twitter again provides the most realistic data, but all sources are a good source of data. 
 
 ## **Examples**
 
