@@ -115,5 +115,3 @@ def write_keyword(new_data: any, filename='WebScraper/twitterKeywordData.json') 
         print("done")
         file.seek(0)
         json.dump(file_data, file, indent = 4)
-
-# print(searchByKeyword(['Simone Biles']))

@@ -1,5 +1,18 @@
 # CICApplication
 
+## **Important Files**
+
+model.py: This file is where all of the training data is aggregated and input into the model in order to be trained. Instructions to initialize the
+training of the model of within the model.py file. And further linked here. 
+
+twitScrape.py: This is where the Twitter scraper is stored. This file includes all of the functions needed to scrape data from Twitter to use for training and classification. 
+
+instaScrape.py: This is where the Instagram scraper is stored. This file includes all of the functions needed to scrape data from Instagram to use for training and classification. 
+
+training_examples.py: This file contains all of the data used for gathering training and testing data. This file includes the keywords of interest (diseases), sentences corresponding to each word, and the same format of training data for location and numerical figures (and soon, for dates as well). 
+
+extract.py: This is the bread and butter of the tool. This is where the extraction of information from news sources is performed. Exact functionality is detailed in all of the functions, so refer to those definitions and descriptions for more guidance.
+
 ## **Instructions to Scrape**
 
 Twitter - 
@@ -15,11 +28,12 @@ Instagram -
 
 ## **Using the Tool**
 
-Inputing data - 
+Inputing data - Data will typically come from the stream of data that is returned by a scraper of choice. 
 
 Running the scrapers - 
 
-Gathering results - 
+Gathering results - All results gathered form the extraction of information will be gathered in the extracted.json file. From there
+you can use python code to convert from JSON format in to a SQL database for parsing and discovery. 
 
 ## **Training Data**
 
