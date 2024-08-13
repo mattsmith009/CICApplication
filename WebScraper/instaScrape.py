@@ -1,8 +1,8 @@
 import instaloader
 
-instance = instaloader.Instaloader()
+instance = instaloader.InstaloaderContext(iphone_support=False)
 
-# L.login(user="mosebeety", passwd="06m03s04")
-instance.interactive_login(username="mosebeety")
-profile = instaloader.Profile.from_username(instance, "spazmattie").get_posts()
-# L.load_session_from_file(username="mosebeety")
+instance.login(user="mosebeety", passwd="06m03s04")
+profile = instaloader.Profile.from_username(instance, "spazmattie")
+hashtag = instaloader.Hashtag.from_name(instance, "olympics")
+hashtag.get_posts_resumable()

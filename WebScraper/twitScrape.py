@@ -12,8 +12,8 @@ to_zone = tz.tzlocal()
 app = Twitter("session")
 
 ### Fill in login info here 
-username = "spazmattie"
-password = "06M03s04"
+username = ""
+password = ""
 ### Fill in login info here
 
 app.sign_in(username, password)
