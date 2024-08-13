@@ -8,8 +8,8 @@ nlp = spacy.load("output/model-best")
 # nlp = spacy.load("output/model-last")
 
 ### Fill in scraping info here
-keywords = ['EASTERN EQUINE ENCEPHALITIS']
-users = []
+keywords = ['']
+users = ['']
 ### Fill in scraping info here
 
 keywordsDict = searchByKeyword(keywords)
